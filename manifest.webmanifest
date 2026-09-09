@@ -1,0 +1,23 @@
+{
+  "id": "./push-test.html",
+  "name": "Shuttle VIP Coordinator",
+  "short_name": "Shuttle VIP",
+  "description": "Prueba de notificaciones del panel de coordinación Shuttle VIP",
+  "start_url": "./push-test.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f3f6f8",
+  "theme_color": "#003a70",
+  "icons": [
+    {
+      "src": "./push-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./push-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
