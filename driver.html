@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>My Driver</title>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="./driver-icon.png">
+  <link rel="icon" type="image/png" href="./driver-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="My Driver">
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <style>
+    :root { color-scheme: light dark; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: #f4f7fa;
+      color: #0a2742;
+    }
+    .card {
+      width: min(92vw, 420px);
+      padding: 28px 22px;
+      border-radius: 24px;
+      background: white;
+      box-shadow: 0 12px 35px rgba(0,0,0,.10);
+      text-align: center;
+    }
+    .icon {
+      width: 120px;
+      height: 120px;
+      border-radius: 28px;
+      object-fit: contain;
+      margin-bottom: 16px;
+    }
+    h1 { margin: 0 0 8px; font-size: 26px; }
+    p { margin: 0; line-height: 1.45; color: #617080; }
+    .small { margin-top: 16px; font-size: 12px; }
+  </style>
+
+</head>
+<body>
+  <main class="card">
+    <img class="icon" src="./driver-icon.png" alt="">
+    <h1>My Driver</h1>
+    <p id="texto">Abre esta página en Safari y añádela a la pantalla de inicio.</p>
+    <p class="small">Al abrirla desde el icono, accederás directamente a Shuttle VIP.</p>
+  </main>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    const target = params.get('target') || '';
+
+    const esValido =
+      /^https:\/\/script\.google\.com\/macros\/s\/.+\/exec(?:\?|$)/.test(target);
+
+    const standalone =
+      window.navigator.standalone === true ||
+      window.matchMedia('(display-mode: standalone)').matches;
+
+    if (!target) {
+      document.getElementById('texto').textContent =
+        'Falta el enlace de destino de Shuttle VIP.';
+    } else if (!esValido) {
+      document.getElementById('texto').textContent =
+        'El enlace de destino no parece válido.';
+    } else if (standalone) {
+      location.replace(target);
+    }
+  </script>
+</body>
+</html>
